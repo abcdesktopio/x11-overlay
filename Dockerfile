@@ -48,8 +48,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/* 
 RUN mkdir /data && chmod 666 /data
-COPY --from=builder --chmod=755 /src/x11-overlay/bin /usr/local/bin
-COPY --from=builder --chmod=755 /src/x11-overlay/docker-entrypoint.sh /docker-entrypoint.sh
+COPY --from=builder /src/x11-overlay/bin /usr/local/bin
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 # change passwd shadow group gshadow
 ENV ABCDESKTOP_LOCALACCOUNT_DIR "/etc/localaccount"
 RUN mkdir -p $ABCDESKTOP_LOCALACCOUNT_DIR && \
