@@ -23,7 +23,9 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /src/x11-overlay && \
     git clone https://github.com/abcdesktopio/x11-overlay.git /src/x11-overlay
 
-RUN cd src/x11-overlay && make
+RUN cd /src/x11-overlay && make
+RUN cd /src/x11-overlay && ./bin/run_tests
+
 # --- END OF builder ---
 
 # --- start here
