@@ -6,4 +6,4 @@ while [ ! -S $X11SOCKET ]; do
 	sleep  0.1
 done
 echo "$ABCDESKTOP_USERNAME\n$ABCDESKTOP_PROVIDERNAME\n$ABCDESKTOP_USERID" > /data/overlay.txt
-/usr/local/bin/overlay /data/overlay.txt -f Helvetica -d 0 -o CENTER -s 100 -t 4 -o CENTER
+/usr/local/bin/overlay /data/overlay.txt -f Arial -d 0 -o CENTER -s 100 -t 4 -o CENTER
