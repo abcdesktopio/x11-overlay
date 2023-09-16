@@ -41,4 +41,4 @@ jobs:
           TAG=22.04
           BASE_IMAGE_RELEASE=22.04
           BASE_IMAGE=ubuntu
-        tags: abcdesktopio/x11-overlay.${{ env.imagetag }}
+        tags: abcdesktopio/x11-overlay:${{ env.imagetag }}
