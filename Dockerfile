@@ -47,6 +47,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/* 
 RUN mkdir /data && chmod 666 /data
-COPY --from=builder /src/x11-overlay/bin /usr/local/bin
-COPY --from=builder /src/x11-overlay/docker-entrypoint.sh /docker-entrypoint.sh
+COPY --from=builder --chmod=755 /src/x11-overlay/bin /usr/local/bin
+COPY --from=builder --chmod=755 /src/x11-overlay/docker-entrypoint.sh /docker-entrypoint.sh
 CMD  ["/docker-entrypoint.sh"]
