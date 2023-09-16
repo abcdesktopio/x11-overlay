@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends debconf && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        xauth \
 	libx11-6 \
         libxfixes3 \
         libxrandr2 \
@@ -49,4 +50,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN mkdir /data && chmod 666 /data
 COPY --from=builder --chmod=755 /src/x11-overlay/bin /usr/local/bin
 COPY --from=builder --chmod=755 /src/x11-overlay/docker-entrypoint.sh /docker-entrypoint.sh
+# change passwd shadow group gshadow
+ENV ABCDESKTOP_LOCALACCOUNT_DIR "/etc/localaccount"
+RUN mkdir -p $ABCDESKTOP_LOCALACCOUNT_DIR && \
+    for f in passwd shadow group gshadow ; do if [ -f /etc/$f ] ; then  cp /etc/$f $ABCDESKTOP_LOCALACCOUNT_DIR ; rm -f /etc/$f; ln -s $ABCDESKTOP_LOCALACCOUNT_DIR/$f /etc/$f; fi; done
+# set build date
+RUN date > /etc/build.date
 CMD  ["/docker-entrypoint.sh"]
