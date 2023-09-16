@@ -1,4 +1,13 @@
 #!/bin/bash
+
+export STDOUT_LOGFILE=/tmp/x11-overlay.log
+export STDOUT_ENVLOGFILE=/tmp/x11-overlay.env.log
+START_TIME=$(date +%s)
+
+log() {
+echo "$(date) $1" >> $STDOUT_LOGFILE
+}
+
 X11SOCKET=/tmp/.X11-unix/X0
 echo "waiting for socket $X11SOCKET"
 while [ ! -S $X11SOCKET ]; do
@@ -10,7 +19,6 @@ echo "$ABCDESKTOP_USERNAME\n$ABCDESKTOP_PROVIDERNAME\n$ABCDESKTOP_USERID" > /dat
 # .Xauthority
 if [ ! -f ~/.Xauthority ]; then
 	log "~/.Xauthority does not exist"
-	ls -la ~ >> $STDOUT_LOGFILE
 	# create a MIT-MAGIC-COOKIE-1 entry in .Xauthority
 	if [ ! -z "$XAUTH_KEY" ]; then
         	log "xauth add $DISPLAY MIT-MAGIC-COOKIE-1 $XAUTH_KEY"
