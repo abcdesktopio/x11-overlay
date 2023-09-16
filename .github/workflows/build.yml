@@ -30,7 +30,7 @@ jobs:
     - name: "image tag"
       run: echo "image tag set to '${{ env.imagetag }}'"
      
-    - name: Build test image abcdesktopio/oc.user:test
+    - name: Build test image abcdesktopio/x11-overlay
       uses: docker/build-push-action@v4
       with:
         context: .
