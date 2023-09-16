@@ -12,9 +12,8 @@ jobs:
 
     steps:
     
-    # checkout is done in Dockerfile 
-    # - name: Checkout repository
-    #   uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
       
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
