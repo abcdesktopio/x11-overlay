@@ -19,6 +19,15 @@ done
 
 log "x11 is ready $X11SOCKET"
 
+
+echo 'run inxi -Gxx'
+
+until inxi -Gxx | grep compositor ; do 
+	echo sleep 1
+	sleep 1
+done
+
+
 echo "$ABCDESKTOP_USERNAME" >> /data/overlay.txt
 echo "$ABCDESKTOP_PROVIDERNAME" >> /data/overlay.txt
 echo "$ABCDESKTOP_USERID" >> /data/overlay.txt

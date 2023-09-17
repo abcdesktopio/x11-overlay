@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libxfixes3 \
         libxrandr2 \
         libxft2 \
+	inxi \
         libfreetype6 \
 	ttf-xfree86-nonfree \
 	ttf-mscorefonts-installer && \
