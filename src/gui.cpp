@@ -25,8 +25,8 @@ Gui::Gui()
     window = new X11Window(0, 0, 480, 640);
     canvas = window->createCanvas();
 
-    setDefaultBackgroundColor(0, 0, 0, 100);
-    setDefaultForgroundColor(255, 255, 255, 200);
+    setDefaultBackgroundColor(0, 0, 0, 0);
+    setDefaultForgroundColor(255, 255, 255, 20);
     clearMessages();
 }
 
