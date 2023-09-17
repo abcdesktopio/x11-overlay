@@ -10,7 +10,7 @@
 
 #define LINE_LIMIT 100
 #define CHECK_FILE_INTERVAL_MS 1000
-#define CHECK_GUI_INTERVAL_MS 50
+#define CHECK_GUI_INTERVAL_MS 200
 
 Gui* gui = nullptr;
 bool running = true;
